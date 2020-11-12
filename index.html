@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body style="margin:0;">
+
+
+    <div class="paragraph">
+
+        <h2>Valley of Flowers</h2>
+
+        <p>
+            This breathtaking landscape of nature is a part of Nanda Devi and Valley of Flowers 
+            National Parks, located in North Chamoli, Uttrakhand. It is recognized as a 
+            ‘World Heritage Site’ by UNESCO. The Valley of Flowers offers a spectacular view 
+            of thriving flora and fauna every year for thousands of tourists from across the world. 
+            It is one of the favorite sites for nature lovers who love to bask in the magnificent 
+            glory of God’s creation. A perfect example of tranquility amongst the snow-covered 
+            mountains of Chamoli. This vista is a home to a variety of species of birds and flowers.
+        </p>
+        <img src="https://source.unsplash.com/250x250/?nature,green" alt="flower" class="align-left slide-in">
+        <p>
+            Tourists visit the Valley of flowers for the love of trekking. It is a 17 km, high-altitude 
+            trek between the terrific mountains. The journey encompasses dense forests, rivers, bridges, 
+            and glaciers, leaving the trekkers in awe of the lush scenery. Also, it is an ideal
+             attraction for photographers. The valley allows you to capture some of the most extraordinary 
+             pictures of rare flowers and birds native to the region. Trekking and Wildlife photography 
+             are some of the must-have activities along with sightseeing. Camping is another favorite 
+             adventure amongst the people who go for a trip to the Valley of flowers.
+        </p>
+        <img src="https://source.unsplash.com/250x250/?nature,flower" alt="flower" class="align-right slide-in">
+        <p>
+            This trip is an 11-hour drive from Dehradun to Joshimath, and another hour to Gobindghat. 
+            From Gobindghat, it is a 13 km trek along a steep, narrow, but well-defined mountain 
+            trail to base camp at Ghangaria. Then, from Ghangaria, another 3 to 4 km trek leads to
+             the valley.
+        </p>
+        <img src="https://source.unsplash.com/250x250/?nature" alt="flower" class="align-left slide-in">
+        <p>
+            This Indian National Park opens for only four months that is, from June to October. You can enjoy 
+            the marvelous wonders of this valley during July and August. It is in full bloom during these
+            months. Planning a trip to the Valley of flowers will be an incredible option for these vacations.
+        </p>
+
+    </div>
+
+
+    <script>
+
+        function debounce(func, wait, immediate) {
+            var timeout;
+
+            return function executedFunction() {
+            var context = this;
+    var args = arguments;
+	    
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+
+    var callNow = immediate && !timeout;
+	
+    clearTimeout(timeout);
+
+    timeout = setTimeout(later, wait);
+	
+    if (callNow) func.apply(context, args);
+  };
+};
+
+        const sliderImages= document.querySelectorAll('.slide-in');
+
+        function checkSlide(e)
+        {
+            sliderImages.forEach(sliderImage =>{
+                
+                const slideInAt= (window.scrollY + window.innerHeight) - sliderImage.height/2;
+                const imageBottom= sliderImage.offsetTop + sliderImage.height;
+                const isHalfShown= slideInAt > sliderImage.offsetTop;
+                const isNotScrolledPast= window.scrollY < imageBottom;
+
+                if( isHalfShown && isNotScrolledPast)
+                {
+                    sliderImage.classList.add('active');
+                }
+                else
+                {
+                    sliderImage.classList.remove('active');
+                }
+            });        
+        }
+
+        window.addEventListener('scroll', debounce(checkSlide));
+
+
+    </script>
+    
+</body>
+</html>
